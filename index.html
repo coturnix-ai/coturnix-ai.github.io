@@ -13,3 +13,19 @@
   <h1>Coturnix LX2</h1>
   <input class="chatinput">
 </body>
+<script>
+  fetch("https://cors-anywhere.herokuapp.com/https://www.powerthesaurus.org/")
+    .then(response => response.text())
+    .then(html => {
+        let parser = new DOMParser();
+        let doc = parser.parseFromString(html, "text/html");
+
+        // Extract words from the parsed document
+        let words = [...doc.querySelectorAll('.pt-thesaurus-card__term-title')]
+                    .map(el => el.innerText.trim());
+
+        console.log("Synonyms:", words);
+    })
+    .catch(error => console.error("Error:", error));
+
+</script>
