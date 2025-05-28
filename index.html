@@ -1,83 +1,53 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coturnix LX2</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coturnix AI</title>
   <style>
-    h1, p {
-      font-family: 'Ubuntu', sans-serif;
-    }
-    .chatinput {
-      font-family: 'Verdana', sans-serif;
-      background-color: teal;
-      border-style: none;
-      padding: 10px;
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
       color: white;
-      margin-top: 20px;
-      width: 80%;
-      display: block;
-      font-size: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 1.5rem;
+      max-width: 600px;
+      line-height: 1.4;
+      opacity: 0.85;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.9rem;
+      opacity: 0.5;
     }
   </style>
 </head>
 <body>
-  <h1>Coturnix LX2</h1>
-  <input class="chatinput" placeholder="Message Coturnix" oninput="fetchSynonyms()">
-  <div id="synonyms-container"></div>
-
-  <script>
-    let websites = []; // Store the websites loaded from sources.txt
-
-    // Fetch the sources.txt file from your GitHub Pages (replace the URL with your actual file URL)
-    async function loadSourcesFromWeb() {
-      try {
-        const response = await fetch("sources.txt");
-        const text = await response.text();
-        websites = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
-        console.log("Loaded websites from sources.txt:", websites);
-      } catch (error) {
-        console.error('Error loading sources.txt:', error);
-      }
-    }
-
-    // Call the function to load the file on page load
-    window.onload = loadSourcesFromWeb;
-
-    // Function to fetch synonyms using PowerThesaurus API
-    async function fetchSynonyms() {
-      const inputWord = document.querySelector('.chatinput').value.trim();
-      if (inputWord === "") return;
-
-      try {
-        const response = await fetch(`https://api.powerthesaurus.org/v1/synonyms?word=${inputWord}`);
-        const data = await response.json();
-
-        if (data.synonyms && data.synonyms.length > 0) {
-          displaySynonyms(data.synonyms);
-        } else {
-          displayNoSynonyms();
-        }
-      } catch (error) {
-        console.error('Error fetching synonyms:', error);
-        displayNoSynonyms();
-      }
-
-      // Optionally, log the websites (from sources.txt) to the console
-      console.log("Websites from sources.txt:", websites);
-    }
-
-    function displaySynonyms(synonyms) {
-      const container = document.getElementById('synonyms-container');
-      container.innerHTML = `<h3>Synonyms:</h3><ul>${synonyms.map(word => `<li>${word}</li>`).join('')}</ul>`;
-    }
-
-    function displayNoSynonyms() {
-      const container = document.getElementById('synonyms-container');
-      container.innerHTML = `<p>No synonyms found for this word.</p>`;
-    }
-  </script>
+  <h1>Coturnix AI</h1>
+  <p>Building the future of Artificial Intelligence and Large Language Models.</p>
+  <h1>Coturnix ML</h1>
+  <p>Built with love in mind.</p>
+  <p>SDK (Warning: Advanced)</p>
+  <a href="https://github.com/coturnix-ai/coturnix-ml">Dev SDK</a>
+  <footer>© 2025 Coturnix AI. All rights reserved.</footer>
 </body>
 </html>
-
